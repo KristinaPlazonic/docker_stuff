@@ -33,6 +33,21 @@ from: https://www.sylabs.io/guides/2.6/user-guide/singularity_and_docker.html
 
 # Introduction
 
+# Exersices 0: 
+
+- follow these commands and find out what they are doing by executing `docker ps` (which gives you the list of running containers) after each command (or `docker ps -a` to give all)
+```
+docker run -dt busybox   # runs busybox in detached mode 
+docker run -t myfirstcontainer busybox  #exits right away
+docker run --name myfirstcontainer -d busybox  #exits right away
+docker run --name myfirstcontainer2 -dt busybox #keeps running because it's detached from the shell 
+docker stop myfirstcontainer2
+docker rm myfirstcontainer2
+docker run -itd keeprunning busybox
+docker exec keeprunning pwd   # will give root, because you are inside the container now
+docker exec keeprunning sh -c "pwd && ls && echo blah"  # busybox doesn't have bash, only sh; here we want 3 commands to execute *inside* the container
+docker image ls # list all images
+```
 
 # Exercise 1:
 1. pull busybox:latest docker image (find it in https://hub.docker.com/explore/ and pull to your laptop)
